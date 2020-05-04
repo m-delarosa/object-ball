@@ -128,6 +128,9 @@ function awayTeamName() {
     return gameObject().away.teamName
 }
 
+function teams() {
+    return Object.values(gameObject())
+}
 // numPoints scored functionality starts here
 
 function getPlayers() {
@@ -213,6 +216,15 @@ function playerStats(playerName) {
     return players[playerName]
 }
 
-function playerWithLargestShoe() {
+const allPlayerStats = () => {
+    return Object.values(getPlayers())
+}
 
+
+function bigShoeRebounds() {
+    let reducer = (memo, player) => {
+        return (player.shoe > memo.shoe) ? player : memo
+    }
+
+    return allPlayerStats().reduce(reducer).rebounds
 }
